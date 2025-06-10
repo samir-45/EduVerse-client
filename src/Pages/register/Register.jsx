@@ -1,9 +1,151 @@
-import React from 'react';
+import Lottie from 'lottie-react';
+import { ArrowLeft } from 'lucide-react';
+import React, { useState } from 'react';
+import { Link } from 'react-router';
+import registerLottie from '../../assets/lotties/register-lottie.json'
+import UseAuth from '../../Hooks/UseAuth'
 
 const Register = () => {
+
+    const { createUser, updateUser, setUser, signInWithGoogle } = UseAuth()
+
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        password: '',
+        photoUrl: '',
+    });
+
+    const handleChange = (e) => {
+        setFormData((prev) => ({
+            ...prev,
+            [e.target.name]: e.target.value,
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const { email, password, name, photoUrl } = formData;
+        createUser(email, password)
+            .then(res => {
+                console.log(res)
+                updateUser({ displayName: name, photoURL: photoUrl })
+                    .then(() => {
+                        console.log('profile updated')
+                        setUser({ ...res, displayName: name, photoURL: photoUrl })
+                        //   navigate('/')
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        setUser(res)
+                    })
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    };
+
+        const handleGoogleLogin = () => {
+      signInWithGoogle()
+      .then(result => {
+        console.log(result)
+        setUser(result)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    }
+
     return (
-        <div>
-            
+
+        <div className=" min-h-screen grid grid-cols-3 place-items-center items-center relative bg-gray-100 px-4">
+            <Link
+                to="/"
+                className=" absolute top-10 left-10 inline-block mb-4 px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition"
+            >
+                <div className='flex items-center'><ArrowLeft /><p>Back to Home</p></div>
+
+
+            </Link>
+
+            <div className='col-span-2'>
+                <div className="w-full max-w-md z-10 bg-white rounded-2xl shadow-lg p-8">
+                    <h2 className="text-2xl font-bold text-blue-600 flex items-center gap-2">
+                        <span className="w-3 h-3 rounded-full bg-blue-600 animate-pulse"></span>
+                        Register
+                    </h2>
+                    <p className="text-gray-500 mt-2">Signup now and get full access to our app.</p>
+
+
+                    <form onSubmit={handleSubmit} className="mt-6 space-y-2">
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            className="w-full p-3 text-black border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                            required
+                        />
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            className="w-full p-3 text-black border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                            required
+                        />
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            minLength="8"
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                            title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
+                            value={formData.password}
+                            onChange={handleChange}
+                            className="w-full p-3 text-black border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                            required
+                        />
+                        <input
+                            type="url"
+                            name="photoUrl"
+                            placeholder="photoUrl"
+                            value={formData.photoUrl}
+                            onChange={handleChange}
+                            className="w-full p-3 text-black border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                            required
+                        />
+
+                        <button
+                            type="submit"
+                            className="w-full text-base-300 bg-blue-600  py-3 rounded-lg hover:bg-blue-700 transition"
+                        >
+                            Submit
+                        </button>
+                        <div className="divider invert">OR</div>
+                        <button onClick={handleGoogleLogin} type='button' className="btn w-full bg-white text-black border-[#e5e5e5]">
+                            <svg aria-label="Google logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g><path d="m0 0H512V512H0" fill="#fff"></path><path fill="#34a853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"></path><path fill="#4285f4" d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"></path><path fill="#fbbc02" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"></path><path fill="#ea4335" d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"></path></g></svg>
+                            SignUp with Google
+                        </button>
+                    </form>
+
+                    <p className="mt-4 text-center text-sm text-gray-600">
+                        Already have an account?{' '}
+                        <Link to="/auth/signIn" className="text-blue-600 hover:underline">
+                            Signin
+                        </Link>
+                    </p>
+                </div>
+            </div>
+
+
+            {/* Lottie animation */}
+
+            <div className=''>
+                <Lottie className='' animationData={registerLottie} loop={true}></Lottie>
+            </div>
         </div>
     );
 };

@@ -1,18 +1,31 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router';
 import logoWt from '../../assets/logo-wt.png'
+import UseAuth from '../../Hooks/UseAuth';
 
 const NavBar = () => {
+
+  const {signOutUser, user} = UseAuth()
 
   const links = <>
     <div className='space-x-3 flex signika-font text-lg'>
       <li><NavLink to='/'>Home</NavLink></li>
-      <li><NavLink to='/'>All Articles</NavLink></li>
+      <li><NavLink to='/articles'>All Articles</NavLink></li>
       <li><NavLink to='/'>About Us</NavLink></li>
     </div>
   </>
 
-  const [logo, setLogo] = useState(true)
+  const [logo, setLogo] = useState(true);
+
+  const handleSignOut = () => {
+    signOutUser()
+    .then(res => {
+      console.log(res)
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
 
   return (
     <div>
@@ -46,34 +59,37 @@ const NavBar = () => {
         <div className="navbar-end space-x-2">
 
 
-
-          <div className='dropdown dropdown-bottom'>
+              {
+                user ?           <div className='dropdown dropdown-bottom'>
             <div tabIndex={0} role="button" className='h-14 cursor-pointer border flex p-1 rounded-lg items-center gap-2 border-dashed'>
               {/* Avatar */}
               <div>
                 <div className="avatar">
                   <div className="w-10 rounded-full">
-                    <img src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp" />
+                    <img src={`${user.photoURL? user.photoURL : "https://img.daisyui.com/images/profile/demo/yellingcat@192.webp"}`} />
                   </div>
                 </div>
               </div>
               {/* Info */}
               <div>
-                <h2 className='font-bold signika-font text-lg'>Md Mahin Khan</h2>
-                <h3 className='text-sm playfair-font'>mdmahinkhan621@gmail.com</h3>
+                <h2 className='font-bold signika-font text-lg'>{user.displayName? user.displayName : 'User'}</h2>
+                <h3 className='text-sm playfair-font'>{user.email}</h3>
               </div>
             </div>
             <ul tabIndex={0} className="dropdown-content signika-font menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
               <li><NavLink to='/'>My Articles</NavLink></li>
               <li><NavLink to='/'>Post Articles</NavLink></li>
-              <li><NavLink to='/'>Log Out</NavLink></li>
+              <li><NavLink onClick={handleSignOut} to='/'>Log Out</NavLink></li>
             </ul>
-          </div>
+          </div>  : <NavLink className="btn rounded-full " to='/auth/signIn'>SignIn</NavLink>
+              }
+          {/* User Info */}
 
 
 
-          <NavLink className="btn rounded-full " to='/'>SignIn</NavLink>
-          {/* <NavLink className="btn rounded-full " to='/'>Registration</NavLink> */}
+
+          {/* <NavLink className="btn rounded-full " to='/auth/signIn'>SignIn</NavLink> */}
+          {/* <NavLink className="btn rounded-full " to='/auth/register'>Register</NavLink> */}
 
 
           {/* Theme toggle */}

@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Banner from '../Shared/Banner';
+import FeaturedArticles from '../Shared/FeaturedArticles';
+import Loading from '../Shared/Loading'
+import CategoryBox from '../CategoryBox/CategoryBox';
+
+    const articlesPromise = fetch('http://localhost:3000/articles').then(res => res.json())
 
 const Home = () => {
+
     return (
         <div className=''>
-            <Banner></Banner>
+            <div>
+                <Banner></Banner>
+            </div>
+            <div className='mt-10'>
+                <div className='w-11/12 mx-auto'>
+                    <CategoryBox></CategoryBox>
+                </div>
+                <Suspense fallback={<Loading></Loading>}>
+                    <FeaturedArticles articlesPromise={articlesPromise}></FeaturedArticles>
+                </Suspense>
+                
+            </div>
+            
         </div>
     );
 };

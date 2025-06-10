@@ -3,6 +3,11 @@ import {
 } from "react-router";
 import RootLayout from "../layouts/RootLayout";
 import Home from "../Pages/Home/Home";
+import Register from "../Pages/register/Register";
+import AuthLayout from "../layouts/AuthLayout";
+import SignIn from "../Pages/SignIn/SignIn";
+import Articles from "../Pages/Articles/Articles";
+import CategoryPage from "../Pages/CategoryPage/CategoryPage";
 
 const router = createBrowserRouter([
   {
@@ -12,9 +17,35 @@ const router = createBrowserRouter([
         {
             index: true,
             Component: Home
+        },
+        {
+          path: 'articles',
+          loader: () => fetch('http://localhost:3000/articles'),
+          Component: Articles
+        },
+        {
+          path: '/category/:categoryName',
+          loader: ({params}) => fetch(`http://localhost:3000/articles/category/${params.categoryName}`),
+          Component: CategoryPage
         }
+
     ]
   },
+  {
+    path: '/auth',
+    Component: AuthLayout,
+    children: [
+        {
+          index: true,
+          path: '/auth/register',
+          Component: Register
+        },
+        {
+          path: '/auth/signIn',
+          Component: SignIn
+        },
+    ]
+  }
 ]);
 
 export default router;

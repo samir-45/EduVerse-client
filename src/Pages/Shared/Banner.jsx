@@ -15,10 +15,10 @@ const Banner = () => {
                 <p className="mt-4 text-xl w-9/12 mx-auto playfair-font">Effortlessly build blogs, API docs, and product guides with Hashnode, with the flexibility of a headless CMS and more.</p>
                 <div className='space-x-5'>
                                     <button className='btn invert rounded-full text-lg px-7 py-6'>
-                    <Link  to='/'>Explore Articles</Link>
+                    <Link  to='/articles'>Explore Articles</Link>
                 </button>
                 <button className='btn rounded-full text-lg px-7 py-6'>
-                    <Link  to='/'>Sign up for free</Link>
+                    <Link  to='/auth/signIn'>Sign up for free</Link>
                 </button>
                 </div>
 
