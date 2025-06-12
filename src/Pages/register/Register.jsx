@@ -1,11 +1,12 @@
 import Lottie from 'lottie-react';
 import { ArrowLeft } from 'lucide-react';
 import React, { useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import registerLottie from '../../assets/lotties/register-lottie.json'
 import UseAuth from '../../Hooks/UseAuth'
 
 const Register = () => {
+    const navigate = useNavigate()
 
     const { createUser, updateUser, setUser, signInWithGoogle } = UseAuth()
 
@@ -33,7 +34,7 @@ const Register = () => {
                     .then(() => {
                         console.log('profile updated')
                         setUser({ ...res, displayName: name, photoURL: photoUrl })
-                        //   navigate('/')
+                          navigate('/')
                     })
                     .catch(error => {
                         console.log(error)
@@ -50,6 +51,7 @@ const Register = () => {
       .then(result => {
         console.log(result)
         setUser(result)
+        navigate('/')
       })
       .catch(error => {
         console.log(error)

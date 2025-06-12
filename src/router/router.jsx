@@ -8,6 +8,8 @@ import AuthLayout from "../layouts/AuthLayout";
 import SignIn from "../Pages/SignIn/SignIn";
 import Articles from "../Pages/Articles/Articles";
 import CategoryPage from "../Pages/CategoryPage/CategoryPage";
+import ArticleDetails from "../Pages/ArticleDetails/ArticleDetails";
+import LoadingRoute from "../routes/LoadingRoute";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,11 @@ const router = createBrowserRouter([
           path: 'articles',
           loader: () => fetch('http://localhost:3000/articles'),
           Component: Articles
+        },
+        {
+          path: 'articles/:id',
+          loader: ({params}) => fetch(`http://localhost:3000/articles/${params.id}`),
+          element: <LoadingRoute><ArticleDetails></ArticleDetails></LoadingRoute>
         },
         {
           path: '/category/:categoryName',

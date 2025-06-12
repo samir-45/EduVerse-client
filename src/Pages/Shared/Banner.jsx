@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router';
+import UseAuth from '../../Hooks/UseAuth';
 
 const Banner = () => {
+
+    const {user} = UseAuth()
+
     return (
         <div className="relative h-[90vh]  flex items-center justify-center overflow-hidden text-white">
 
@@ -17,9 +21,12 @@ const Banner = () => {
                                     <button className='btn invert rounded-full text-lg px-7 py-6'>
                     <Link  to='/articles'>Explore Articles</Link>
                 </button>
-                <button className='btn rounded-full text-lg px-7 py-6'>
+                {
+                    user? '': <button className='btn rounded-full text-lg px-7 py-6'>
                     <Link  to='/auth/signIn'>Sign up for free</Link>
                 </button>
+                }
+                
                 </div>
 
 

@@ -3,6 +3,8 @@ import Banner from '../Shared/Banner';
 import FeaturedArticles from '../Shared/FeaturedArticles';
 import Loading from '../Shared/Loading'
 import CategoryBox from '../CategoryBox/CategoryBox';
+import TrendingTags from '../TrendingTags/TrendingTags';
+import Newsletter from '../NewsLetter/Newsletter';
 
     const articlesPromise = fetch('http://localhost:3000/articles').then(res => res.json())
 
@@ -21,6 +23,14 @@ const Home = () => {
                     <FeaturedArticles articlesPromise={articlesPromise}></FeaturedArticles>
                 </Suspense>
                 
+            </div>
+            <div>
+                <Suspense fallback={<Loading></Loading>}>
+                    <TrendingTags></TrendingTags>
+                </Suspense> 
+            </div>
+            <div>
+                <Newsletter></Newsletter>
             </div>
             
         </div>
