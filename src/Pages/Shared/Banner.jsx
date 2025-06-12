@@ -16,7 +16,7 @@ const Banner = () => {
         <div className="relative h-[90vh]  flex items-center justify-center overflow-hidden text-white">
 
             {/* Pattern Background Layer */}
-            <div className="absolute container inset-0 z-0">
+            <div className="absolute container w-full h-full z-0">
             </div>
 
             {/* Banner Content */}

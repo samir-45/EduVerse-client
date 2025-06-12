@@ -10,6 +10,8 @@ import Articles from "../Pages/Articles/Articles";
 import CategoryPage from "../Pages/CategoryPage/CategoryPage";
 import ArticleDetails from "../Pages/ArticleDetails/ArticleDetails";
 import LoadingRoute from "../routes/LoadingRoute";
+import AboutUs from "../Pages/AboutUs/AboutUs";
+import AddArticle from "../Pages/AddArticle/AddArticle";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +36,14 @@ const router = createBrowserRouter([
           path: '/category/:categoryName',
           loader: ({params}) => fetch(`http://localhost:3000/articles/category/${params.categoryName}`),
           Component: CategoryPage
+        },
+        {
+          path: '/addArticle',
+          Component: AddArticle
+        },
+        {
+          path: '/aboutUs',
+          Component: AboutUs
         }
 
     ]

@@ -7,7 +7,7 @@ const CategoryBox = () => {
   const allTags = ['Technology', 'Programming', 'Education', 'Design', 'Web Development', 'Self Improvement', 'Tools'];
 
 
-  const [visibleTags, setVisibleTags] = useState(allTags.slice(0, 6));
+  const [visibleTags, setVisibleTags] = useState(allTags.slice(0, 5));
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleShowMore = () => {
@@ -15,7 +15,7 @@ const CategoryBox = () => {
     if (!isExpanded) {
       setVisibleTags(allTags);
     } else {
-      setVisibleTags(allTags.slice(0, 6));
+      setVisibleTags(allTags.slice(0, 5));
     }
   };
 
@@ -24,13 +24,13 @@ const CategoryBox = () => {
         <div>
             <h2 className='text-2xl font-bold signika-font'># All Categories</h2>
     <div className="flex justify-center items-center font-sans p-4">
-      <div className="w-full shadow-xl max-w-4xl bg-base-300 p-3 rounded-full flex items-center space-x-2 ">
+      <div className="w-full shadow-xl max-w-4xl bg-base-300 p-3 lg:rounded-full rounded-2xl flex items-center space-x-2 ">
 
-        <div className="flex-grow flex items-center space-x-2 overflow-hidden">
+        <div className="flex-grow flex flex-wrap items-center gap-2 ">
           {visibleTags.map((tag) => (
             <button
               key={tag}
-              className="btn btn-sm btn-ghost rounded-full text-base-content font-medium bg-base-100 hover:bg-base-200 h-9 px-4 hidden sm:inline-flex"
+              className="btn btn-sm btn-ghost rounded-full text-base-content font-medium bg-base-100 hover:bg-base-200 h-9 px-4 inline-flex"
             >
                 <Link to={`/category/${tag}`}>{tag}</Link>
               

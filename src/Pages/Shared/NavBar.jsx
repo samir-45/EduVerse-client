@@ -8,11 +8,11 @@ const NavBar = () => {
   const {signOutUser, user} = UseAuth()
 
   const links = <>
-    <div className='space-x-3 flex signika-font text-lg'>
+    
       <li><NavLink to='/'>Home</NavLink></li>
       <li><NavLink to='/articles'>All Articles</NavLink></li>
-      <li><NavLink to='/'>About Us</NavLink></li>
-    </div>
+      <li><NavLink to='/aboutUs'>About Us</NavLink></li>
+    
   </>
 
   const [logo, setLogo] = useState(true);
@@ -37,7 +37,8 @@ const NavBar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow space-x-3 signika-font text-lg">
+                
               {links}
             </ul>
           </div>
@@ -52,8 +53,13 @@ const NavBar = () => {
 
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            {links}
+          <ul className="menu menu-vertical px-1  space-x-3 ">
+            <div className='flex signika-font text-lg'>
+              {links}
+            </div>
+              
+            
+            
           </ul>
         </div>
         <div className="navbar-end space-x-2">
@@ -61,7 +67,7 @@ const NavBar = () => {
 
               {
                 user ?           <div className='dropdown dropdown-bottom'>
-            <div tabIndex={0} role="button" className='h-14 cursor-pointer border flex p-1 rounded-lg items-center gap-2 border-dashed'>
+            <div tabIndex={0} role="button" className='h-14 cursor-pointer sm:border flex p-1 rounded-lg items-center gap-2 sm:border-dashed'>
               {/* Avatar */}
               <div>
                 <div className="avatar">
@@ -71,25 +77,20 @@ const NavBar = () => {
                 </div>
               </div>
               {/* Info */}
-              <div>
+              <div className='hidden sm:block'>
                 <h2 className='font-bold signika-font text-lg'>{user.displayName? user.displayName : 'User'}</h2>
                 <h3 className='text-sm playfair-font'>{user.email}</h3>
               </div>
             </div>
             <ul tabIndex={0} className="dropdown-content signika-font menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
               <li><NavLink to='/'>My Articles</NavLink></li>
-              <li><NavLink to='/'>Post Articles</NavLink></li>
+              <li><NavLink to='/addArticle'>Post Articles</NavLink></li>
               <li><NavLink onClick={handleSignOut} to='/'>Log Out</NavLink></li>
             </ul>
           </div>  : <NavLink className="btn rounded-full " to='/auth/signIn'>SignIn</NavLink>
               }
           {/* User Info */}
 
-
-
-
-          {/* <NavLink className="btn rounded-full " to='/auth/signIn'>SignIn</NavLink> */}
-          {/* <NavLink className="btn rounded-full " to='/auth/register'>Register</NavLink> */}
 
 
           {/* Theme toggle */}
