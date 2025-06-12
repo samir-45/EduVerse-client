@@ -1,9 +1,11 @@
 // components/Newsletter.jsx
 // import { toast } from 'react-toastify';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import UseAuth from "../../Hooks/UseAuth";
+import Aos from "aos";
+import 'aos/dist/aos.css';
 
 const Newsletter = () => {
 
@@ -30,8 +32,12 @@ theme: "colored",
     
   };
 
+      useEffect(() => {
+          Aos.init({ duration: 1000, once: true });
+      }, []);
+
   return (
-    <section className="bg-gradient-to-r w-11/12 mx-auto bg-base-300 py-12 px-4 rounded-xl border dark:border-none border-gray-200 shadow-xl">
+    <section data-aos="fade-up" className=" bg-gradient-to-r w-11/12 mx-auto bg-base-300 py-12 px-4 rounded-xl border dark:border-none border-gray-200 shadow-xl">
       <div className="w-11/12 mx-auto text-center">
         <div className="inline-block bg-blue-100 p-3 rounded-full mb-4">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -49,7 +55,7 @@ theme: "colored",
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
           <input
             type="email"
-            defaultValue={user.email}
+            defaultValue={user?.email}
             placeholder="Enter your email"
             className="flex-grow px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
             required

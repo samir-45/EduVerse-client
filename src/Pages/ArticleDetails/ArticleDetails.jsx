@@ -116,6 +116,13 @@ const ArticleDetails = () => {
 
   // ------------------------------------
 
+  // Handle full hide content
+  const [showFull, setShowFull] = useState(false);
+
+  const toggleContent = () => {
+    setShowFull(!showFull);
+  }
+
   return (
     <section className="w-11/12 max-w-5xl mx-auto py-10text-base-content">
       {/* Banner Image */}
@@ -143,7 +150,17 @@ const ArticleDetails = () => {
 
       {/* Content */}
       <article className="prose dark:prose-invert max-w-none prose-lg mb-10">
-        <p>{content}</p>
+        <p>
+           {showFull ? content : `${content.slice(0, 300)}...`}
+        </p>
+              {article.content.length > 300 && (
+        <button
+          onClick={toggleContent}
+          className="text-blue-600 font-semibold hover:underline transition mb-6"
+        >
+          {showFull ? 'See Less ▲' : 'See More ▼'}
+        </button>
+      )}
       </article>
 
       {/* Tags */}

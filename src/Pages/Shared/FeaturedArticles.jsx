@@ -1,5 +1,6 @@
 import React, { use } from 'react';
 import BlogCard from './BlogCard';
+import 'aos/dist/aos.css';
 
 const FeaturedArticles = ({ articlesPromise }) => {
 

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 const TrendingTags = () => {
   const [tags, setTags] = useState([]);
@@ -17,8 +19,12 @@ const TrendingTags = () => {
   })
   }, []);
 
+        useEffect(() => {
+            Aos.init({ duration: 1000, once: true });
+        }, []);
+
   return (
-    <section className="w-11/12 mx-auto py-8">
+    <section data-aos="fade-up" className="w-11/12 mx-auto py-8">
       <h2 className="text-3xl font-bold mb-4 signika-font text-base-content">
         🔥 Trending Tags
       </h2>

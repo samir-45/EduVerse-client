@@ -1,11 +1,17 @@
-import React from 'react';
+import Aos from 'aos';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router';
+import 'aos/dist/aos.css';
 
 const BlogCard = ({ article }) => {
   const { thumbnail, title, content, author_name, date, _id } = article;
 
+  useEffect(() => {
+    Aos.init({ duration: 1000, once: true });
+  }, []);
+
   return (
-    <div className="bg-base-100  shadow-lg rounded-xl overflow-hidden  transition hover:shadow-xl">
+    <div data-aos="fade-up" className="bg-base-100  shadow-lg rounded-xl overflow-hidden  transition hover:shadow-xl">
       <div className='hover:brightness-80 cursor-pointer'>
 
         <Link to={`/articles/${_id}`}>
