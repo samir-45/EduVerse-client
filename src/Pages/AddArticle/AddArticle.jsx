@@ -1,57 +1,46 @@
-import { useState } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import UseAuth from '../../Hooks/UseAuth';
 
 const AddArticle = () => {
 
-    const {user} = UseAuth();
+  const { user } = UseAuth();
 
-    const {displayName, photoURL, email} = user;
-
-  const [formData, setFormData] = useState({
-    title: '',
-    content: '',
-    category: '',
-    tags: '',
-    thumbnail: '',
-  });
-
-//   const user = {
-//     displayName: 'Mahin',
-//     photoURL: 'https://i.pravatar.cc/150?img=5',
-//     email: 'mahin.dev@gmail.com',
-//   };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const article = {
-      ...formData,
-      tags: formData.tags.split(',').map(tag => tag.trim()),
-      author_name: displayName,
-      author_photo: photoURL,
-      author_email: email,
-      date: new Date().toISOString().slice(0, 10), // "2025-06-13"
-      likes: 0,
-      liked_users: [],
-    };
 
-    console.log(article)
+    const form = e.target;
 
-    // axios.post('http://localhost:3000/articles', article)
-    //   .then(res => {
-    //     console.log(res.data);
-    //     alert('Article added successfully!');
-    //   })
-    //   .catch(err => {
-    //     console.error(err);
-    //     alert('Failed to add article.');
-    //   });
+    const formDataObj = new FormData(form);
+
+    const data = Object.fromEntries(formDataObj.entries())
+
+    data.tags = data.tags.split(',').map(tag => tag.trim())
+
+    data.date = new Date().toISOString().slice(0, 10)
+
+    data.author_name = user?.displayName;
+
+    data.author_photo = user?.photoURL;
+
+    data.author_email = user?.email;
+
+
+    console.log(data)
+
+    // Save job to the database
+
+    axios.post('http://localhost:3000/articles', data)
+      .then(res => {
+        console.log(res.data);
+        // if(res.data.insertedId){
+
+        // }
+      })
+      .catch(err => {
+        console.error(err);
+      });
   };
 
   return (
@@ -65,8 +54,8 @@ const AddArticle = () => {
           type="text"
           name="title"
           placeholder="Article Title"
-          value={formData.title}
-          onChange={handleChange}
+          // value={formData.title}
+          // onChange={handleChange}
           required
           className="w-full px-4 py-2 border rounded dark:bg-zinc-800 dark:text-white"
         />
@@ -74,29 +63,39 @@ const AddArticle = () => {
         <textarea
           name="content"
           placeholder="Write your article content here..."
-          value={formData.content}
-          onChange={handleChange}
+          // value={formData.content}
+          // onChange={handleChange}
           required
           rows={8}
           className="w-full px-4 py-2 border rounded dark:bg-zinc-800 dark:text-white"
         />
 
-        <input
-          type="text"
-          name="category"
-          placeholder="Category (e.g. Web Development)"
-          value={formData.category}
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-2 border rounded dark:bg-zinc-800 dark:text-white"
-        />
+
+        <div className="form-control">
+          <select
+            name="category"
+            // value={formData.category}
+            // onChange={handleChange}
+            className="w-full px-4 py-2 border rounded dark:bg-zinc-800 dark:text-white"
+            required
+          >
+            <option value="" disabled>Select Category</option>
+            <option value="Technology">Technology</option>
+            <option value="Programming">Programming</option>
+            <option value="Education">Education</option>
+            <option value="Design">Design</option>
+            <option value="Web Development">Web Development</option>
+            <option value="Self Improvement">Self Improvement</option>
+            <option value="Tools">Tools</option>
+          </select>
+        </div>
 
         <input
           type="text"
           name="tags"
           placeholder="Tags (comma-separated: React,JS,Learning)"
-          value={formData.tags}
-          onChange={handleChange}
+          // value={formData.tags}
+          // onChange={handleChange}
           className="w-full px-4 py-2 border rounded dark:bg-zinc-800 dark:text-white"
         />
 
@@ -104,8 +103,8 @@ const AddArticle = () => {
           type="text"
           name="thumbnail"
           placeholder="Thumbnail Image URL"
-          value={formData.thumbnail}
-          onChange={handleChange}
+          // value={formData.thumbnail}
+          // onChange={handleChange}
           className="w-full px-4 py-2 border rounded dark:bg-zinc-800 dark:text-white"
         />
 
