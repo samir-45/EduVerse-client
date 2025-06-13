@@ -10,8 +10,10 @@ import Articles from "../Pages/Articles/Articles";
 import CategoryPage from "../Pages/CategoryPage/CategoryPage";
 import ArticleDetails from "../Pages/ArticleDetails/ArticleDetails";
 import LoadingRoute from "../routes/LoadingRoute";
+import PrivetRoute from "../routes/PrivetRoute";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import AddArticle from "../Pages/AddArticle/AddArticle";
+import MyArticles from "../Pages/MyArticles/MyArticles";
 
 const router = createBrowserRouter([
   {
@@ -39,7 +41,11 @@ const router = createBrowserRouter([
         },
         {
           path: '/addArticle',
-          Component: AddArticle
+          element: <PrivetRoute><AddArticle></AddArticle></PrivetRoute>
+        },
+        {
+          path: '/myArticles',
+          element: <PrivetRoute><MyArticles></MyArticles></PrivetRoute>
         },
         {
           path: '/aboutUs',

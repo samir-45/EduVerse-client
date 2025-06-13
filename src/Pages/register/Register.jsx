@@ -60,17 +60,17 @@ const Register = () => {
 
     return (
 
-        <div className=" min-h-screen grid grid-cols-3 place-items-center items-center relative bg-gray-100 px-4">
+        <div className=" min-h-screen grid sm:grid-cols-3 place-items-center items-center relative bg-gray-100 px-4">
             <Link
                 to="/"
-                className=" absolute top-10 left-10 inline-block mb-4 px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition"
+                className=" absolute top-5 sm:top-10 left-5 sm:left-10 inline-block mb-4 px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition"
             >
                 <div className='flex items-center'><ArrowLeft /><p>Back to Home</p></div>
 
 
             </Link>
 
-            <div className='col-span-2'>
+            <div className='col-span-2 mt-20'>
                 <div className="w-full max-w-md z-10 bg-white rounded-2xl shadow-lg p-8">
                     <h2 className="text-2xl font-bold text-blue-600 flex items-center gap-2">
                         <span className="w-3 h-3 rounded-full bg-blue-600 animate-pulse"></span>
@@ -145,7 +145,7 @@ const Register = () => {
 
             {/* Lottie animation */}
 
-            <div className=''>
+            <div className='hidden md:block'>
                 <Lottie className='' animationData={registerLottie} loop={true}></Lottie>
             </div>
         </div>

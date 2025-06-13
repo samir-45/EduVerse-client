@@ -9,19 +9,19 @@ const TrendingTags = () => {
 
 
 
-    useEffect(() => {
-  axios.get('http://localhost:3000/articles/tags')
-  .then(res => {
-    setTags(res.data)
-  })
-  .catch(error => {
-    console.log(error)
-  })
-  }, []);
 
-        useEffect(() => {
-            Aos.init({ duration: 1000, once: true });
-        }, []);
+  axios.get('http://localhost:3000/articles/tags')
+    .then(res => {
+      setTags(res.data)
+    })
+    .catch(error => {
+      console.log(error)
+    })
+
+
+  useEffect(() => {
+    Aos.init({ duration: 1000, once: true });
+  }, []);
 
   return (
     <section data-aos="fade-up" className="w-11/12 mx-auto py-8">

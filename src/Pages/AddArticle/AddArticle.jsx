@@ -1,5 +1,7 @@
 import axios from 'axios';
 import UseAuth from '../../Hooks/UseAuth';
+import Lottie from 'lottie-react';
+import articleLottie from "../../assets/lotties/article-lottie.json";
 
 const AddArticle = () => {
 
@@ -44,8 +46,9 @@ const AddArticle = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto py-12 px-4">
-      <h2 className="text-3xl font-bold mb-6 text-zinc-900 dark:text-white">
+    <div className='flex items-center'>
+          <div className="max-w-3xl mx-auto py-12 px-4">
+      <h2 className="text-3xl font-bold mb-6 text-base-content">
         ✍️ Add New Article
       </h2>
 
@@ -57,7 +60,7 @@ const AddArticle = () => {
           // value={formData.title}
           // onChange={handleChange}
           required
-          className="w-full px-4 py-2 border rounded dark:bg-zinc-800 dark:text-white"
+          className="w-full px-4 py-2  bg-base-300 rounded text-base-content"
         />
 
         <textarea
@@ -67,7 +70,7 @@ const AddArticle = () => {
           // onChange={handleChange}
           required
           rows={8}
-          className="w-full px-4 py-2 border rounded dark:bg-zinc-800 dark:text-white"
+          className="w-full px-4 py-2 bg-base-300 rounded text-base-content"
         />
 
 
@@ -76,7 +79,8 @@ const AddArticle = () => {
             name="category"
             // value={formData.category}
             // onChange={handleChange}
-            className="w-full px-4 py-2 border rounded dark:bg-zinc-800 dark:text-white"
+            defaultValue={""}
+            className="w-full px-4 py-2 bg-base-300 rounded text-base-content"
             required
           >
             <option value="" disabled>Select Category</option>
@@ -93,19 +97,21 @@ const AddArticle = () => {
         <input
           type="text"
           name="tags"
+          required
           placeholder="Tags (comma-separated: React,JS,Learning)"
           // value={formData.tags}
           // onChange={handleChange}
-          className="w-full px-4 py-2 border rounded dark:bg-zinc-800 dark:text-white"
+          className="w-full px-4 py-2 bg-base-300 rounded text-base-content"
         />
 
         <input
           type="text"
           name="thumbnail"
           placeholder="Thumbnail Image URL"
+          required
           // value={formData.thumbnail}
           // onChange={handleChange}
-          className="w-full px-4 py-2 border rounded dark:bg-zinc-800 dark:text-white"
+          className="w-full px-4 py-2 bg-base-300 rounded text-base-content"
         />
 
         <button
@@ -116,6 +122,11 @@ const AddArticle = () => {
         </button>
       </form>
     </div>
+    <div className='hidden md:block'>
+      <Lottie animationData={articleLottie} loop={true}></Lottie>
+    </div>
+    </div>
+
   );
 };
 

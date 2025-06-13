@@ -83,8 +83,8 @@ const NavBar = () => {
               </div>
             </div>
             <ul tabIndex={0} className="dropdown-content signika-font menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-              <li><NavLink to='/'>My Articles</NavLink></li>
               <li><NavLink to='/addArticle'>Post Articles</NavLink></li>
+              <li><NavLink to='/myArticles'>My Articles</NavLink></li>
               <li><NavLink onClick={handleSignOut} to='/'>Log Out</NavLink></li>
             </ul>
           </div>  : <NavLink className="btn rounded-full " to='/auth/signIn'>SignIn</NavLink>
