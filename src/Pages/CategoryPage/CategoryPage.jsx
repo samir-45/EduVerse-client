@@ -6,7 +6,6 @@ import CategoryBox from '../CategoryBox/CategoryBox';
 const CategoryPage = () => {
 
     const articles = useLoaderData()
-    console.log(articles)
 
     return (
         <div>

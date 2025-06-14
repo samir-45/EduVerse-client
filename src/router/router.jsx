@@ -14,6 +14,7 @@ import PrivetRoute from "../routes/PrivetRoute";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import AddArticle from "../Pages/AddArticle/AddArticle";
 import MyArticles from "../Pages/MyArticles/MyArticles";
+import UpdateArticle from "../Pages/UpdateArticle/UpdateArticle";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,11 @@ const router = createBrowserRouter([
         {
           path: '/myArticles',
           element: <PrivetRoute><MyArticles></MyArticles></PrivetRoute>
+        },
+        {
+          path: '/updateArticle/:id',
+          loader: ({params}) => fetch(`http://localhost:3000/articles/${params.id}`),
+          element: <PrivetRoute><UpdateArticle></UpdateArticle></PrivetRoute>
         },
         {
           path: '/aboutUs',

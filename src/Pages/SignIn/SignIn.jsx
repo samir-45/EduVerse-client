@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import loginLottie from '../../assets/lotties/login-lottie.json'
 import UseAuth from '../../Hooks/UseAuth';
+import { FiEye, FiEyeOff } from 'react-icons/fi';
 
 const SignIn = () => {
 
@@ -37,17 +38,19 @@ const SignIn = () => {
 
     };
 
-            const handleGoogleLogin = () => {
-      signInWithGoogle()
-      .then(result => {
-        console.log(result)
-        setUser(result)
-        navigate('/')
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    const handleGoogleLogin = () => {
+        signInWithGoogle()
+            .then(result => {
+                console.log(result)
+                setUser(result)
+                navigate('/')
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
+
+    const [showPassword, setShowPassword] = useState(true);
 
     return (
 
@@ -79,18 +82,27 @@ const SignIn = () => {
                             className="w-full p-3 text-black border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
                             required
                         />
-                        <input
-                            type="password"
-                            name="password"
-                            placeholder="Password"
-                            minLength="8"
-                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                            title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
-                            value={formData.password}
-                            onChange={handleChange}
-                            className="w-full p-3 text-black border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
-                            required
-                        />
+
+                        <label className="input bg-transparent h-12 validator w-full p-2 text-black border border-gray-300 rounded-lg outline-none ">
+                            <input
+                                type={showPassword ? "password" : "text"}
+                                required
+                                name='password'
+                                placeholder="Password"
+                                minLength="8"
+                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
+                                value={formData.password}
+                                onChange={handleChange}
+                            />
+                            {/* Show/Hide Icon */}
+                            <span
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 cursor-pointer"
+                                onClick={() => setShowPassword(!showPassword)}
+                            >
+                                {showPassword ? <FiEyeOff size={20} /> : <FiEye size={20} />}
+                            </span>
+                        </label>
 
                         <button
                             type="submit"

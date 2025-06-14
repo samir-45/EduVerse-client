@@ -11,7 +11,7 @@ const BlogCard = ({ article }) => {
   }, []);
 
   return (
-    <div data-aos="fade-up" className="bg-base-100  shadow-lg rounded-xl overflow-hidden  transition hover:shadow-xl">
+    <div data-aos="fade-up" className=" bg-base-100  shadow-lg rounded-xl overflow-hidden transition hover:shadow-xl">
       <div className='hover:brightness-80 cursor-pointer'>
 
         <Link to={`/articles/${_id}`}>
@@ -31,9 +31,13 @@ const BlogCard = ({ article }) => {
         <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
           {content.length > 120 ? content.slice(0, 120) + '...' : content}
         </p>
+
         <div className="flex justify-between items-center text-sm text-zinc-500 dark:text-zinc-400">
           <span>✍️ {author_name}</span>
           <span>📅 {new Date(date).toLocaleDateString()}</span>
+        </div>
+        <div className='flex justify-end py-3'>
+          <button className='btn btn-primary'><Link to={`/articles/${_id}`}>Read more</Link></button>
         </div>
       </div>
     </div>

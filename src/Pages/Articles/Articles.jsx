@@ -2,10 +2,29 @@ import React from 'react';
 import { useLoaderData } from 'react-router';
 import BlogCard from '../Shared/BlogCard';
 import CategoryBox from '../CategoryBox/CategoryBox';
+// import axios from 'axios';
+import UseAuth from '../../Hooks/UseAuth';
+import Loading from '../Shared/Loading';
 
 const Articles = () => {
+    // const {setLoading, loading} = UseAuth()
+
+    // const [articles, setArticles] = useState([])
+
+
+    // axios.get('http://localhost:3000/articles')
+    // .then(res => {
+    //     setArticles(res.data)
+        
+    // })
+    // .catch(error => {
+    //     console.log(error)
+    // })
+    // console.log(articles)
+
 
     const articles = useLoaderData();
+    console.log(articles)
 
     return (
         <div>
