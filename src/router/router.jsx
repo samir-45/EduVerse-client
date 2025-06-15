@@ -15,6 +15,7 @@ import AboutUs from "../Pages/AboutUs/AboutUs";
 import AddArticle from "../Pages/AddArticle/AddArticle";
 import MyArticles from "../Pages/MyArticles/MyArticles";
 import UpdateArticle from "../Pages/UpdateArticle/UpdateArticle";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
           Component: SignIn
         },
     ]
+  },
+  {
+    path: '/*',
+    Component: ErrorPage
   }
 ]);
 

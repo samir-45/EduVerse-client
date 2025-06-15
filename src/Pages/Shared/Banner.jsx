@@ -12,6 +12,7 @@ const Banner = () => {
         Aos.init({ duration: 1000, once: true });
     }, []);
 
+
     return (
         <div className="relative h-[90vh]  flex items-center justify-center overflow-hidden text-white">
 

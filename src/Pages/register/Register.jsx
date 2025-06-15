@@ -31,11 +31,14 @@ const Register = () => {
         createUser(email, password)
             .then(res => {
                 console.log(res)
+                const token = res.user.accessToken;
+                localStorage.setItem('token', token);
                 updateUser({ displayName: name, photoURL: photoUrl })
                     .then(() => {
                         console.log('profile updated')
                         setUser({ ...res, displayName: name, photoURL: photoUrl })
-                          navigate('/')
+
+                        navigate('/')
                     })
                     .catch(error => {
                         console.log(error)
@@ -47,16 +50,18 @@ const Register = () => {
             })
     };
 
-        const handleGoogleLogin = () => {
-      signInWithGoogle()
-      .then(result => {
-        console.log(result)
-        setUser(result)
-        navigate('/')
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    const handleGoogleLogin = () => {
+        signInWithGoogle()
+            .then(result => {
+                console.log(result)
+                setUser(result)
+                const token = result.user.accessToken;
+                localStorage.setItem('token', token);
+                navigate('/')
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 
     const [showPassword, setShowPassword] = useState(true);

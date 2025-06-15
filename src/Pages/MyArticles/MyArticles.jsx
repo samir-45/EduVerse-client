@@ -7,6 +7,7 @@ import { articlesCreatedByPromise } from '../../api/ArticlesApi';
 const MyArticles = () => {
 
     const { user } = UseAuth()
+    // console.log(user.accessToken)
 
     return (
         <div>

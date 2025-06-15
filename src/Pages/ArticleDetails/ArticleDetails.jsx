@@ -189,11 +189,10 @@ const ArticleDetails = () => {
                       size={20}
             fill={hasLiked ? 'currentColor' : 'none'}
             className="transition"
-          />
-          {/* <Heart
-
-          /> */}
-          Like ({likeCount})
+          />{
+            hasLiked? 'Liked':'Like'
+          }
+           ({likeCount})
         </button>
       </div>
 

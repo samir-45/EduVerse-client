@@ -7,6 +7,8 @@ const ArticlesList = ({ articlesCreatedByPromise }) => {
 
     const articles = use(articlesCreatedByPromise);
 
+    // console.log(articles)
+
     // Handle delete article function
     const handleDelete = (id) => {
         Swal.fire({
@@ -64,7 +66,7 @@ const ArticlesList = ({ articlesCreatedByPromise }) => {
                                         <td>{article.title}</td>
                                         <td>{article.date}</td>
                                         <td className=''>{article.likes ? article.likes : 0}</td>
-                                        <td className='min-w-24 my-5 flex gap-2'>
+                                        <td className='min-w-24 flex gap-2'>
                                             <Link className='btn btn-xs btn-primary' to={`/articles/${article._id}`}>View Details</Link>
                                             <Link to={`/updateArticle/${article._id}`} className='btn btn-xs btn-warning'>Update</Link>
                                             <button

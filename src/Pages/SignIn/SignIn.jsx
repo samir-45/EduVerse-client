@@ -28,8 +28,10 @@ const SignIn = () => {
         const { email, password } = formData;
         console.log(formData)
         signInUser(email, password)
-            .then(res => {
-                console.log(res)
+            .then(result => {
+                setUser(result)
+                const token = result.user.accessToken;
+                localStorage.setItem('token', token);
                 navigate('/')
             })
             .catch(error => {
@@ -38,11 +40,15 @@ const SignIn = () => {
 
     };
 
+    // const token = user?.accessToken;
+
     const handleGoogleLogin = () => {
         signInWithGoogle()
             .then(result => {
-                console.log(result)
+                // console.log(result)
                 setUser(result)
+                const token = result.user.accessToken;
+                localStorage.setItem('token', token);
                 navigate('/')
             })
             .catch(error => {
