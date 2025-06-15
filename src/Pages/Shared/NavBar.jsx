@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router';
 import logoWt from '../../assets/logo-wt.png'
 import UseAuth from '../../Hooks/UseAuth';
 
 const NavBar = () => {
 
-  const {signOutUser, user} = UseAuth()
+  const {signOutUser, user, setTheme, theme} = UseAuth()
 
   const links = <>
     
@@ -15,7 +15,7 @@ const NavBar = () => {
     
   </>
 
-  const [logo, setLogo] = useState(true);
+ 
 
   const handleSignOut = () => {
     signOutUser()
@@ -46,7 +46,7 @@ const NavBar = () => {
           <div className='flex items-center gap-2'>
             <div>
               {
-                logo ? <img className='w-12' src={logoWt} alt="" /> : <img className='w-12 invert' src={logoWt} alt="" />
+                theme ? <img className='w-12' src={logoWt} alt="" /> : <img className='w-12 invert' src={logoWt} alt="" />
               }
             </div>
                         <h1 className='font-bold signika-font text-2xl pt-1'>EduVerse</h1>
@@ -97,11 +97,11 @@ const NavBar = () => {
           {/* Theme toggle */}
           <label className="swap swap-rotate">
             {/* this hidden checkbox controls the state */}
-            <input onClick={() => setLogo(!logo)} type="checkbox" className="theme-controller" value="light" />
+            <input onClick={() => setTheme(!theme)} type="checkbox" className="theme-controller" value="light" />
 
             {/* sun icon */}
             <svg
-              className="swap-off h-10 w-10 fill-current"
+              className="swap-on h-10 w-10 fill-current"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24">
               <path
@@ -110,7 +110,7 @@ const NavBar = () => {
 
             {/* moon icon */}
             <svg
-              className="swap-on h-10 w-10 fill-current"
+              className="swap-off h-10 w-10 fill-current"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24">
               <path

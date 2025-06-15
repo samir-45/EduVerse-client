@@ -9,6 +9,7 @@ const AuthProvider = ({ children }) => {
 
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
+     const [theme, setTheme] = useState(true);
 
     const createUser = (email, password) => {
         setLoading(true)
@@ -69,7 +70,9 @@ const AuthProvider = ({ children }) => {
         loading,
         setLoading,
         user,
-        setUser
+        setUser,
+        theme,
+        setTheme
     }
 
     return (

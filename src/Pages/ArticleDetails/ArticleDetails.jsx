@@ -182,7 +182,7 @@ const ArticleDetails = () => {
           disabled={hasLiked}
           className={`flex items-center gap-2 px-4 py-2 rounded transition border ${hasLiked
               ? 'bg-blue-600 text-white border-blue-600 cursor-not-allowed'
-              : 'bg-base-300 dark:invert text-blue-600 border-blue-600 hover:bg-blue-600 hover:text-white'
+              : 'bg-base-300 text-blue-600 border-blue-600 hover:bg-blue-600 hover:text-white'
             }`}
         >
           <ThumbsUp 
@@ -196,7 +196,7 @@ const ArticleDetails = () => {
         </button>
       </div>
 
-      {/* Comments */}
+      {/* Comments count*/}
       <div className="border-t pt-6 dark:border-zinc-600">
         <h3 className="text-xl font-bold mb-4">Comments ({fetchedComments.length})</h3>
 
