@@ -34,7 +34,7 @@ const AddArticle = () => {
 
     // Save job to the database
 
-    axios.post('http://localhost:3000/articles', data, {
+    axios.post('https://eduverse-server.vercel.app/articles', data, {
       headers: {
         Authorization: `Bearer ${user.accessToken}`
       }

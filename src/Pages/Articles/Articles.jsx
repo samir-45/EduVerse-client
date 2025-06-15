@@ -12,7 +12,7 @@ const Articles = () => {
     // const [articles, setArticles] = useState([])
 
 
-    // axios.get('http://localhost:3000/articles')
+    // axios.get('https://eduverse-server.vercel.app/articles')
     // .then(res => {
     //     setArticles(res.data)
         

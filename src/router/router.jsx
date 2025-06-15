@@ -28,17 +28,17 @@ const router = createBrowserRouter([
         },
         {
           path: 'articles',
-          loader: () => fetch('http://localhost:3000/articles'),
+          loader: () => fetch('https://eduverse-server.vercel.app/articles'),
           Component: Articles
         },
         {
           path: 'articles/:id',
-          loader: ({params}) => fetch(`http://localhost:3000/articles/${params.id}`),
+          loader: ({params}) => fetch(`https://eduverse-server.vercel.app/articles/${params.id}`),
           element: <LoadingRoute><ArticleDetails></ArticleDetails></LoadingRoute>
         },
         {
           path: '/category/:categoryName',
-          loader: ({params}) => fetch(`http://localhost:3000/articles/category/${params.categoryName}`),
+          loader: ({params}) => fetch(`https://eduverse-server.vercel.app/articles/category/${params.categoryName}`),
           Component: CategoryPage
         },
         {
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
         },
         {
           path: '/updateArticle/:id',
-          loader: ({params}) => fetch(`http://localhost:3000/articles/${params.id}`),
+          loader: ({params}) => fetch(`https://eduverse-server.vercel.app/articles/${params.id}`),
           element: <PrivetRoute><UpdateArticle></UpdateArticle></PrivetRoute>
         },
         {

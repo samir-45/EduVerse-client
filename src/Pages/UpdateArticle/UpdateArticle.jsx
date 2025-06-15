@@ -1,7 +1,7 @@
 import React from 'react';
 import Lottie from 'lottie-react';
 import articleLottie from "../../assets/lotties/article-lottie.json";
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
@@ -9,6 +9,7 @@ const UpdateArticle = () => {
 
     const article = useLoaderData()
     // console.log(article)
+    const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -22,17 +23,18 @@ const UpdateArticle = () => {
         data.tags = data.tags.split(',').map(tag => tag.trim())
 
         // NOw update data to the database
-        axios.put(`http://localhost:3000/articles/${article._id}`, data)
-            .then(data => {
-                console.log(data)
-                if (data.modifiedCount) {
+        axios.put(`https://eduverse-server.vercel.app/articles/${article._id}`, data)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.modifiedCount) {
                     Swal.fire({
                         position: "center",
                         icon: "success",
-                        title: "Article updated successfully",
+                        title: "Your work has been saved",
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    navigate(`/articles/${article._id}`)
                 }
             })
             .catch(error => {
@@ -111,7 +113,7 @@ const UpdateArticle = () => {
 
                         <button
                             type="submit"
-                            className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+                            className="bg-blue-600 cursor-pointer text-white px-6 py-2 rounded hover:bg-blue-700 transition"
                         >
                             Update Article
                         </button>

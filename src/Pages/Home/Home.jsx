@@ -6,7 +6,7 @@ import CategoryBox from '../CategoryBox/CategoryBox';
 import TrendingTags from '../TrendingTags/TrendingTags';
 import Newsletter from '../NewsLetter/Newsletter';
 
-    const articlesPromise = fetch('http://localhost:3000/articles').then(res => res.json())
+    const articlesPromise = fetch('https://eduverse-server.vercel.app/articles').then(res => res.json())
 
 const Home = () => {
 

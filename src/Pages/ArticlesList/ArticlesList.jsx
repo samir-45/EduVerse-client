@@ -21,7 +21,7 @@ const ArticlesList = ({ articlesCreatedByPromise }) => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/articles/${id}`)
+                axios.delete(`https://eduverse-server.vercel.app/articles/${id}`)
                     .then(res => {
                         if (res.data.deletedCount) {
                             Swal.fire({

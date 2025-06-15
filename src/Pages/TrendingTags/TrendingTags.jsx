@@ -10,7 +10,7 @@ const TrendingTags = () => {
 
 
 
-  axios.get('http://localhost:3000/articles/tags')
+  axios.get('https://eduverse-server.vercel.app/articles/tags')
     .then(res => {
       setTags(res.data)
     })

@@ -37,7 +37,7 @@ const ArticleDetails = () => {
   // ------------------------------------
 
   // Fetch comments from DB
-  axios.get(`http://localhost:3000/comments/${_id}`)
+  axios.get(`https://eduverse-server.vercel.app/comments/${_id}`)
     .then(res => {
       setFetchedComments(res.data)
     })
@@ -64,7 +64,7 @@ const ArticleDetails = () => {
     setHasLiked(true);
     setLikeCount(likeCount + 1);
 
-    axios.patch(`http://localhost:3000/articles/${_id}`, {
+    axios.patch(`https://eduverse-server.vercel.app/articles/${_id}`, {
       user_email: user?.email
     })
       .then(res => {
@@ -104,7 +104,7 @@ const ArticleDetails = () => {
 
 
     // Post comment data to the database
-    axios.post('http://localhost:3000/comments', comment)
+    axios.post('https://eduverse-server.vercel.app/comments', comment)
       .then(res => {
         console.log(res)
       })
