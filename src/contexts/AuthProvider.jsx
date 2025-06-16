@@ -54,7 +54,7 @@ const AuthProvider = ({ children }) => {
             //     })
             // }
 
-            console.log('user in the on state change: ', currentUser)
+            // console.log('user in the on state change: ', currentUser)
         })
         return () => {
             unSubscribe()

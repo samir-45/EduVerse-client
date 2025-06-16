@@ -30,7 +30,7 @@ const AddArticle = () => {
     data.author_email = user?.email;
 
 
-    console.log(data)
+    // console.log(data)
 
     // Save job to the database
 
@@ -40,7 +40,7 @@ const AddArticle = () => {
       }
     })
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.insertedId) {
 
           Swal.fire({

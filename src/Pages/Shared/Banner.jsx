@@ -24,7 +24,7 @@ const Banner = () => {
             <div data-aos="fade-up" className="relative z-10 text-base-content space-y-5 text-center px-4">
                 <h1  className="text-3xl md:text-6xl font-bold w-10/12 signika-font mx-auto">Share, collaborate, and scale your blogs and ideas.</h1>
                 <p className="mt-4 text-xl w-9/12 mx-auto playfair-font">Effortlessly build blogs, API docs, and product guides with Hashnode, with the flexibility of a headless CMS and more.</p>
-                <div className='space-x-5'>
+                <div className='gap-3 sm:gap-5 flex flex-col sm:flex-row border-2 w-fit mx-auto'>
                     <button className='btn invert rounded-full text-lg px-7 py-6'>
                         <Link to='/articles'>Explore Articles</Link>
                     </button>
