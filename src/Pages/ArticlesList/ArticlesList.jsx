@@ -66,15 +66,18 @@ const ArticlesList = ({ articlesCreatedByPromise }) => {
                                         <td>{article.title}</td>
                                         <td>{article.date}</td>
                                         <td className=''>{article.likes ? article.likes : 0}</td>
-                                        <td className='min-w-24 flex gap-2'>
-                                            <Link className='btn btn-xs btn-primary' to={`/articles/${article._id}`}>View Details</Link>
-                                            <Link to={`/updateArticle/${article._id}`} className='btn btn-xs btn-warning'>Update</Link>
-                                            <button
-                                                className='btn btn-xs btn-error'
-                                                onClick={() => handleDelete(article._id)}
-                                            >
-                                                Delete
-                                            </button>
+                                        <td className='min-w-24'>
+                                            <div className='flex gap-2'>
+                                                <Link className='btn btn-xs btn-primary' to={`/articles/${article._id}`}>View Details</Link>
+                                                <Link to={`/updateArticle/${article._id}`} className='btn btn-xs btn-warning'>Update</Link>
+                                                <button
+                                                    className='btn btn-xs btn-error'
+                                                    onClick={() => handleDelete(article._id)}
+                                                >
+                                                    Delete
+                                                </button>
+                                            </div>
+
                                         </td>
 
 
