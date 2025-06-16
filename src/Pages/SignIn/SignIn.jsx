@@ -26,7 +26,7 @@ const SignIn = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const { email, password } = formData;
-        console.log(formData)
+        // console.log(formData)
         signInUser(email, password)
             .then(result => {
                 setUser(result)

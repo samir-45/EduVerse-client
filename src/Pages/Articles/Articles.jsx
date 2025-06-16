@@ -24,7 +24,7 @@ const Articles = () => {
 
 
     const articles = useLoaderData();
-    console.log(articles)
+    // console.log(articles)
 
     return (
         <div>

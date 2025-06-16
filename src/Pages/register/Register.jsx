@@ -30,7 +30,7 @@ const Register = () => {
         const { email, password, name, photoUrl } = formData;
         createUser(email, password)
             .then(res => {
-                console.log(res)
+                // console.log(res)
                 const token = res.user.accessToken;
                 localStorage.setItem('token', token);
                 updateUser({ displayName: name, photoURL: photoUrl })
@@ -53,7 +53,7 @@ const Register = () => {
     const handleGoogleLogin = () => {
         signInWithGoogle()
             .then(result => {
-                console.log(result)
+                // console.log(result)
                 setUser(result)
                 const token = result.user.accessToken;
                 localStorage.setItem('token', token);

@@ -25,7 +25,7 @@ const UpdateArticle = () => {
         // NOw update data to the database
         axios.put(`https://eduverse-server.vercel.app/articles/${article._id}`, data)
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 if (res.data.modifiedCount) {
                     Swal.fire({
                         position: "center",
