@@ -24,18 +24,11 @@ const Footer = () => {
           </p>
         </div>
         <nav>
-          <h6 className="footer-title">Services</h6>
-          <a className="link link-hover">Knowledge</a>
-          <a className="link link-hover">Promotion</a>
-          <a className="link link-hover">Marketing</a>
-          <a className="link link-hover">Raise awareness</a>
-        </nav>
-        <nav>
           <h6 className="footer-title">Company</h6>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Articles</a>
-          <a className="link link-hover">My Articles</a>
+          <Link to='/aboutUs' className="link link-hover">About us</Link>
+          <Link to='/articles' className="link link-hover">Articles</Link>
+          <Link to='/myArticles' className="link link-hover">My Articles</Link>
+          <Link to='/addArticle' className="link link-hover">Post Articles</Link>
         </nav>
         <nav>
           <h6 className="footer-title">Social</h6>

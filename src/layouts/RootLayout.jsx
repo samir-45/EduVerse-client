@@ -6,7 +6,10 @@ import Footer from '../Pages/Shared/Footer';
 const RootLayout = () => {
     return (
         <div className=''>
-            <NavBar></NavBar>
+            <div className=' sticky top-2 z-40'>
+                <NavBar></NavBar>
+            </div>
+            
             <Outlet></Outlet>
             <Footer></Footer>
         </div>

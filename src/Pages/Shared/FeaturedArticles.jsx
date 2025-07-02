@@ -9,7 +9,7 @@ const FeaturedArticles = ({ articlesPromise }) => {
     // 🗓 Get today's date and 10 days ago
     const now = new Date();
     const tenDaysAgo = new Date();
-    tenDaysAgo.setDate(now.getDate() - 10);
+    tenDaysAgo.setDate(now.getDate() - 60);
 
     // 🔍 Filter, Sort & Slice
     const featuredArticles = articles
