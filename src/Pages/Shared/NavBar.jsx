@@ -46,7 +46,7 @@ const NavBar = () => {
           <div className='flex items-center gap-2'>
             <div>
               {
-                theme ? <img className='w-12' src={logoWt} alt="" /> : <img className='w-12 invert' src={logoWt} alt="" />
+                theme ? <img className='w-12 invert' src={logoWt} alt="" /> : <img className='w-12 ' src={logoWt} alt="" />
               }
             </div>
                         <h1 className='font-bold signika-font text-2xl pt-1'>EduVerse</h1>
@@ -97,7 +97,7 @@ const NavBar = () => {
           {/* Theme toggle */}
           <label className="swap swap-rotate">
             {/* this hidden checkbox controls the state */}
-            <input onClick={() => setTheme(!theme)} type="checkbox" className="theme-controller" value="light" />
+            <input onClick={() => setTheme(!theme)} type="checkbox" className="theme-controller" value="dark" />
 
             {/* sun icon */}
             <svg

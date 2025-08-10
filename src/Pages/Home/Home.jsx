@@ -5,6 +5,7 @@ import Loading from '../Shared/Loading'
 import CategoryBox from '../CategoryBox/CategoryBox';
 import TrendingTags from '../TrendingTags/TrendingTags';
 import Newsletter from '../NewsLetter/Newsletter';
+import ReviewSlider from '../Shared/ReviewSlider';
 
     const articlesPromise = fetch('https://eduverse-server.vercel.app/articles').then(res => res.json())
 
@@ -31,6 +32,9 @@ const Home = () => {
             </div>
             <div>
                 <Newsletter></Newsletter>
+            </div>
+            <div>
+                <ReviewSlider></ReviewSlider>
             </div>
             
         </div>
