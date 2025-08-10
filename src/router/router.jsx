@@ -57,7 +57,7 @@ const router = createBrowserRouter([
         },
         {
           path: '/events',
-          element: <Events></Events>
+          element: <PrivetRoute><Events></Events></PrivetRoute>
         },
         {
           path: '/aboutUs',

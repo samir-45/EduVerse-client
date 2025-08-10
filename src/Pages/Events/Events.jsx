@@ -86,7 +86,7 @@ export default function Events() {
 
             {/* Hero Section */}
             <div className="text-center mb-12">
-                <h1 className="text-4xl font-bold text-blue-600">Events & Webinars</h1>
+                <h1 className="text-4xl font-bold">Events & Webinars</h1>
                 <p className="text-gray-600 mt-3 text-lg">
                     Join our upcoming educational events, workshops, and webinars to enhance your skills.
                 </p>
@@ -121,7 +121,7 @@ export default function Events() {
                                 }`}>
                                 {event.type}
                             </span>
-                            <h3 className="text-xl font-semibold text-blue-600 mb-2">{event.title}</h3>
+                            <h3 className="text-xl font-semibold mb-2">{event.title}</h3>
                             <div className="flex items-center text-gray-500 text-sm mb-1">
                                 <FaCalendarAlt className="mr-2" /> {event.date}
                             </div>
