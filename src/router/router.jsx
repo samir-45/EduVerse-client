@@ -16,6 +16,7 @@ import AddArticle from "../Pages/AddArticle/AddArticle";
 import MyArticles from "../Pages/MyArticles/MyArticles";
 import UpdateArticle from "../Pages/UpdateArticle/UpdateArticle";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import Events from "../Pages/Events/Events";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
           path: '/updateArticle/:id',
           loader: ({params}) => fetch(`https://eduverse-server.vercel.app/articles/${params.id}`),
           element: <PrivetRoute><UpdateArticle></UpdateArticle></PrivetRoute>
+        },
+        {
+          path: '/events',
+          element: <Events></Events>
         },
         {
           path: '/aboutUs',
