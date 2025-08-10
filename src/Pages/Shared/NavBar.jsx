@@ -1,36 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router';
 import logoWt from '../../assets/logo-wt.png'
 import UseAuth from '../../Hooks/UseAuth';
 
 const NavBar = () => {
 
-  const {signOutUser, user, setTheme, theme} = UseAuth()
+  const { signOutUser, user, setTheme, theme } = UseAuth()
 
   const links = <>
-    
-      <li><NavLink to='/'>Home</NavLink></li>
-      <li><NavLink to='/articles'>All Articles</NavLink></li>
-      <li><NavLink to='/aboutUs'>About Us</NavLink></li>
-    
+
+    <li><NavLink to='/'>Home</NavLink></li>
+    <li><NavLink to='/articles'>All Articles</NavLink></li>
+    <li><NavLink to='/aboutUs'>About Us</NavLink></li>
+
   </>
 
- 
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+
 
   const handleSignOut = () => {
     signOutUser()
-    .then(res => {
-      localStorage.removeItem("token");
-      console.log(res)
-    })
-    .catch(error => {
-      console.log(error)
-    })
+      .then(res => {
+        localStorage.removeItem("token");
+        console.log(res)
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   return (
     <div>
-      <div className="navbar w-11/12 mx-auto h-14 rounded-full my-5 bg-base-100 shadow-md">
+      <div className={`navbar w-11/12 mx-auto h-14 rounded-full my-5 bg-base-100 shadow-md ${isScrolled ? "bg-white/10 backdrop-blur-md border-b border-white/10 shadow" : " bg-transparent"}`}>
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -39,7 +50,7 @@ const NavBar = () => {
             <ul
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow space-x-3 signika-font text-lg">
-                
+
               {links}
             </ul>
           </div>
@@ -49,7 +60,7 @@ const NavBar = () => {
                 theme ? <img className='w-12 invert' src={logoWt} alt="" /> : <img className='w-12 ' src={logoWt} alt="" />
               }
             </div>
-                        <h1 className='font-bold signika-font text-2xl pt-1'>EduVerse</h1>
+            <h1 className='font-bold signika-font text-2xl pt-1'>EduVerse</h1>
           </div>
 
         </div>
@@ -58,38 +69,38 @@ const NavBar = () => {
             <div className='flex signika-font text-lg'>
               {links}
             </div>
-              
-            
-            
+
+
+
           </ul>
         </div>
         <div className="navbar-end space-x-2">
 
 
-              {
-                user ?           <div className='dropdown dropdown-bottom'>
-            <div tabIndex={0} role="button" className='h-14 cursor-pointer sm:border flex p-1 rounded-lg items-center gap-2 sm:border-dashed'>
-              {/* Avatar */}
-              <div>
-                <div className="avatar">
-                  <div className="w-10 rounded-full">
-                    <img src={`${user.photoURL? user.photoURL : "https://img.daisyui.com/images/profile/demo/yellingcat@192.webp"}`} />
+          {
+            user ? <div className='dropdown dropdown-bottom'>
+              <div tabIndex={0} role="button" className='h-14 cursor-pointer sm:border flex p-1 rounded-lg items-center gap-2 sm:border-dashed'>
+                {/* Avatar */}
+                <div>
+                  <div className="avatar">
+                    <div className="w-10 rounded-full">
+                      <img src={`${user.photoURL ? user.photoURL : "https://img.daisyui.com/images/profile/demo/yellingcat@192.webp"}`} />
+                    </div>
                   </div>
                 </div>
+                {/* Info */}
+                <div className='hidden sm:block'>
+                  <h2 className='font-bold signika-font text-lg'>{user.displayName ? user.displayName : 'User'}</h2>
+                  <h3 className='text-sm playfair-font'>{user.email}</h3>
+                </div>
               </div>
-              {/* Info */}
-              <div className='hidden sm:block'>
-                <h2 className='font-bold signika-font text-lg'>{user.displayName? user.displayName : 'User'}</h2>
-                <h3 className='text-sm playfair-font'>{user.email}</h3>
-              </div>
-            </div>
-            <ul tabIndex={0} className="dropdown-content signika-font menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-              <li><NavLink to='/addArticle'>Post Articles</NavLink></li>
-              <li><NavLink to='/myArticles'>My Articles</NavLink></li>
-              <li><NavLink onClick={handleSignOut} to='/'>Log Out</NavLink></li>
-            </ul>
-          </div>  : <NavLink className="btn rounded-full " to='/auth/signIn'>SignIn</NavLink>
-              }
+              <ul tabIndex={0} className="dropdown-content signika-font menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                <li><NavLink to='/addArticle'>Post Articles</NavLink></li>
+                <li><NavLink to='/myArticles'>My Articles</NavLink></li>
+                <li><NavLink onClick={handleSignOut} to='/'>Log Out</NavLink></li>
+              </ul>
+            </div> : <NavLink className="btn rounded-full " to='/auth/signIn'>SignIn</NavLink>
+          }
           {/* User Info */}
 
 
