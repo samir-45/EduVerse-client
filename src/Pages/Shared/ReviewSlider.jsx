@@ -106,7 +106,7 @@ const ReviewSlider = () => {
                 {/* <div>
                     <img src={reviewTop} alt="" />
                 </div> */}
-                <h1 className='text-4xl font-bold text-center'>What our customers are sayings</h1>
+                <h1 className='text-4xl font-bold text-center'>What our users are sayings</h1>
                 <p className='text-center'>Enhance posture, mobility, and well-being effortlessly with Posture Pro. Achieve proper alignment, reduce <br /> pain, and strengthen your body with ease!</p>
             </div>
 

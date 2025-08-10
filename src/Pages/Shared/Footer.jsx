@@ -14,7 +14,7 @@ const Footer = () => {
           <div className='flex items-center'>
                       <div>
             {
-              theme ? <img className='w-12' src={logoWt} alt="" /> : <img className='w-12 invert' src={logoWt} alt="" />
+              theme ? <img className='w-12 invert' src={logoWt} alt="" /> : <img className='w-12 ' src={logoWt} alt="" />
             }
           </div>
           <h1 className='font-bold signika-font text-2xl pt-1'>EduVerse</h1>
