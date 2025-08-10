@@ -19,6 +19,7 @@ const Newsletter = () => {
         return
     }
     setSubscribed(true)
+    
     toast.success('Subscribed Successfully', {
 position: "top-right",
 autoClose: 5000,
